@@ -18,7 +18,7 @@ module Engine
     # Initialize creates the window and sets a default caption
     # this will be overwritten once the script begins
     # execution. 800x600 is the only size, too bad.
-    def initialize
+    def initialize(scene)
       super(800,600, false)
       self.caption = "Ruby Ren'ai Game Engine"
       @hidden = false
@@ -26,7 +26,7 @@ module Engine
       @graphics = Graphics.new(self)
       @clickables = Array.new
       @music = Music.new(self)
-      @scriptreader = ScriptReader.new(self, "intro")
+      @scriptreader = ScriptReader.new(self, scene || "mainmenu")
       @time = Gosu::milliseconds
       advance
     end
